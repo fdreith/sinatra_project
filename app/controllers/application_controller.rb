@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :landing
+    erb :welcome
   end
 
   post '/login' do
@@ -19,6 +19,14 @@ class ApplicationController < Sinatra::Base
     else
       erb :error
     end
+  end
+
+  get '/signup' do
+    erb :signup
+  end
+
+  post 'signup' do
+    
   end
 
   get '/household' do 
