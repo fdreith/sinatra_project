@@ -5,8 +5,9 @@ class SessionsController < ApplicationController
     end
     
     post '/login' do
-        user = User.find_by(username: params["username"], password: params["password"]) #maybe params[:user][:password]
-        if user && user.authenticate(params["username"]["password"])
+        # {"user"=>{":username"=>"franky", ":password"=>"fredy"}}
+        user = User.find_by(username: params[:user][:username], password: params[:user][:password]) #maybe params[:user][:password]
+        if user && user.authenticate(params[:password])
             session[:user_id]=user.id
             redirect '/home'
         else
@@ -24,11 +25,13 @@ class SessionsController < ApplicationController
     end
     
     post '/signup' do
-        @user = User.new(username: params["username"], password: params["password"])
-        @user.save
-        session[:user__id] = @user.id
-
-        redirect '/home'
+        user = User.new(username: params[:username], password: params[:password])
+        if user.save
+            session[:user_id]=user.id
+            redirect '/home'
+        else
+            erb :error
+        end
     end
 
 end
