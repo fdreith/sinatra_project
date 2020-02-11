@@ -1,0 +1,15 @@
+<% if @user && @user.error.full_messages.length > 0%>
+    <h3> <%= @user.errors.full_messages.to_sentence %>
+<%end%>
+
+<h2> Signup to Create or Join a Household of Critters: </h2>
+
+<form action="/signup" method="post">
+<p>Create a username and password.</p>
+    <label for="username"> Username: </label>
+    <input id="username" type="text" name="user[:username]"><br>
+    <label for="password"> Password: </label>
+    <input id="password" type="password" name="user[:password]"><br><br>
+
+    <input type="submit" value="Sign Up">
+</form>
