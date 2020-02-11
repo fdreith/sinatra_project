@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
-    belongs_to :household
-    has_many :pets
+    has_and_belongs_to_many :households
+    has_many :pets, through households
 end
