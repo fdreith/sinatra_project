@@ -1,3 +1,3 @@
 class Pet < ActiveRecord::Base
-    belongs to :household
+    belongs_to :household
 end
