@@ -10,8 +10,12 @@ class SessionsController < ApplicationController
             session[:user_id]=user.id
             redirect to '/home'
         else
-            erb :error
+            redirect to '/error'
         end
+    end
+
+    get '/error' do
+        erb :error
     end
 
     get '/logout' do
