@@ -8,14 +8,11 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params["user"][":username"]) #OR params[:username]
         if user && user.authenticate(params["user"][":password"])
             session[:user_id]=user.id
-            redirect to '/home'
+            redirect to 'user_view/home'
         else
-            redirect to '/error'
+            flash[:error_message] = "Incorrect username, or password."
+            redirect to '/login'
         end
-    end
-
-    get '/error' do
-        erb :error
     end
 
     get '/logout' do
@@ -31,9 +28,10 @@ class SessionsController < ApplicationController
         user = User.new(username: params["user"][":username"], password: params["user"][":password"])
         if user.save
             session[:user_id]=user.id
-            redirect to '/home'
+            redirect to 'user_view/home'
         else
-            erb :error
+            flash[:error_message] = "That username has been used, please try a different username."
+            redirect to '/signup'
         end
     end
 

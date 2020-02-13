@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/home' do 
-    erb :home
+    erb :'user_view/home'
   end
 
   def logged_in?
