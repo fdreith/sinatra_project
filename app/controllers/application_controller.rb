@@ -13,6 +13,10 @@ class ApplicationController < Sinatra::Base
     redirect to '/login'
   end
 
+  get '/home' do 
+    erb :home
+end
+
   def logged_in?
     !!current_user
   end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params["user"][":username"]) #OR params[:username]
         if user && user.authenticate(params["user"][":password"])
             session[:user_id]=user.id
-            redirect to '/users/home'
+            redirect to "/home"
         else
             erb :error
         end
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
         user = User.new(username: params["user"][":username"], password: params["user"][":password"])
         if user.save
             session[:user_id]=user.id
-            redirect to 'users/home'
+            redirect to '/home'
         else
             erb :error
             redirect to '/signup'
