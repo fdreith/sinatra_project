@@ -20,11 +20,15 @@ class SessionsController < ApplicationController
     end
 
     get '/signup' do
+        @households = Household.all
         erb :'sessions_view/signup'
     end
     
     post '/signup' do
-        user = User.new(username: params["user"][":username"], password: params["user"][":password"])
+        @user = User.new(username: params["user"]["username"], password: params["user"]["password"], household_id: ["user"]["household_id".to_i])
+        if !params["household"]["name"].empty?
+            @user.households << Household.create(name: params["household"]["name"], owner_id: current_user[:id])
+        end
         if user.save
             session[:user_id]=user.id
             redirect to '/home'

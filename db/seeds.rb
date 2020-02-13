@@ -1,9 +1,9 @@
-Household.create(name: "Kirkwood")
+Household.create(name: "Kirkwood", owner_id: 4)
 
-User.create(username: "Francesca", password: "password", household_id: 1)
-User.create(username: "Mike", password: "password", household_id: 1)
-User.create(username: "Annie", password: "password", household_id: 1)
-User.create(username: "Todd", password: "password", household_id: 1)
+User.create(username: "Francesca", password: "password")
+User.create(username: "Mike", password: "password")
+User.create(username: "Annie", password: "password")
+User.create(username: "Todd", password: "password")
 
 Pet.create(name: "Wyatt", species: "Dog", household_id: 1)
 Pet.create(name: "Frankie", species: "Dog", household_id: 1)

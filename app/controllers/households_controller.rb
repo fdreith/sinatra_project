@@ -1,8 +1,4 @@
 class HouseholdsController < ApplicationController
-    # get '/households' do
-    #     @household = Household.all
-    #     erb :'households/index'
-    # end
 
     get '/households/new' do
         @pets = Pet.all
@@ -10,10 +6,11 @@ class HouseholdsController < ApplicationController
     end
 
     post '/households' do
-        @household = Household.create(params[:name])
+        household = Household.create(name: params[:name], owner_id: current_user[:id])
+        # if household.save
+            
     
 
-        
     end
 
     get '/households/:id/edit' do 

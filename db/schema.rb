@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20200212194542) do
 
   create_table "households", force: :cascade do |t|
     t.string   "name"
+    t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,7 +46,6 @@ ActiveRecord::Schema.define(version: 20200212194542) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
-    t.integer  "household_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
