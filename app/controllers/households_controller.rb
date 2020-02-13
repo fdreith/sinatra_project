@@ -8,6 +8,9 @@ class HouseholdsController < ApplicationController
     post '/households' do
         household = Household.create(name: params[:name], owner_id: current_user[:id])
         # if household.save
+        if !params["household"]["name"].empty?
+            @user.households << Household.create(name: params["household"]["name"], owner_id: current_user[:id])
+        end
             
     
 
