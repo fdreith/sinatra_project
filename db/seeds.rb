@@ -12,3 +12,8 @@ Pet.create(name: "Romeo", species: "Dog", household_id: 1)
 Event.create(pet_id: 1, event_type: "Feed")
 Event.create(pet_id: 2, event_type: "Feed")
 Event.create(pet_id: 3, event_type: "Feed")
+
+UserHousehold.create(user_id: 1, household_id: 1)
+UserHousehold.create(user_id: 2, household_id: 1)
+UserHousehold.create(user_id: 3, household_id: 1)
+UserHousehold.create(user_id: 4, household_id: 1)
