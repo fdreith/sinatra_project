@@ -12,7 +12,6 @@ class UsersController < ApplicationController
             redirect to '/home'
         else
             erb :error
-            redirect to '/signup'
         end
     end
 

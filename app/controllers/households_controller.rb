@@ -7,10 +7,10 @@ class HouseholdsController < ApplicationController
 
     post '/households' do
         if !params["household"]["name"].empty?
-            household = Household.create(name: params["household"]["name"], owner_id: current_user.id)
+            @household = Household.create(name: params["household"]["name"], owner_id: current_user.id)
         end
-        
-        redirect to "/households/#{params[:id]}"
+
+        redirect to "/households/#{@household[:id]}"
     end
 
     get '/households/:id' do 
@@ -25,21 +25,8 @@ class HouseholdsController < ApplicationController
 
     patch '/households/:id' do 
         household = Household.find(params[:id])
-        household.update(params["household"])   #pets as a stretch goal)
+        household.update(params["household"])  
         redirect to '/home'
-
-    #     #stretch updating pets:
-    #     # if !params[:household].keys.include?("pet_ids")
-    #     #     params[:household]["pet_ids"] = []
-    #     #   end
-      
-    #     #   @household = Household.find(params[:id])
-    #     #   @household.update(params["household"])
-    #     #   if !params["pet"]["name"].empty?
-    #     #     @household.pets << Pet.create(name: params["pet"]["name"])
-    #     #   end
     end
-    
 
-    
 end

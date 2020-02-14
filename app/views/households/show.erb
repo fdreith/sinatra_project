@@ -1,10 +1,17 @@
 <h1>Pets of <%=@household.name%></h1>
 <ul>
-  <%@household.pets.each do |pet|%>
-  <li><a href="/pets/<%=pet.id%>"><%=pet.name%></a></li> 
+<% if @household.pets.empty?%>
+    <p> This household current has no pets. </p>
+  <%else%>
+    <%@household.pets.each do |pet|%>
+    <li><a href="/pets/<%=pet.id%>"><%=pet.name%></a></li> 
+    <%end%>
   <%end%>
+  
 </ul>
 <p>
+<br><br>
+<a href="/pets/new">Add Pets</a>
 <br><br>
 <a href="/households/<%=@household.id%>/edit">Edit this Household.</a>
 </p>
