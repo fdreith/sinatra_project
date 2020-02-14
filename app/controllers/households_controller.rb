@@ -6,16 +6,12 @@ class HouseholdsController < ApplicationController
     end
 
     post '/households' do
-        #params => {"user"=>{"household_ids"=>["1", "5", "6", "7", "8", "9"]}, "household"=>{"name"=>""}}
         if !params["user"]["household_ids"].empty?
             current_user.household_ids = params["user"]["household_ids"]
         end
         if !params["household"]["name"].empty?
-            binding.pry
             @household = Household.create(name: params["household"]["name"], owner_id: current_user.id)
-            current_user.household_ids << @household.id
-            current_user.save
-            # user_household = UserHousehold.create(user_id: current_user.id, household_id: @household.id)
+            current_user.update(household_ids: current_user.household_ids.push(@household.id))
         end
 
         redirect to '/home'
