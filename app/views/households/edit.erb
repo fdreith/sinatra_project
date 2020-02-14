@@ -1,0 +1,19 @@
+<form action="/households/<%=@household.id%>" method="post">
+<input id="hidden" type="hidden" name="_method" value="patch">
+
+<h3> Update Household</h3>
+
+    <label>Update Household Name: </label>
+    <br>
+    <input type="text" name="household[name]" id="household_name" value="<%=@household.name%>">
+    <br><br>
+
+    #list out pets to modify
+    <br>
+
+
+    <input type="submit" value="Update Household">
+</form>
+
+
+
