@@ -1,0 +1,29 @@
+<h2><%=@pet.name%>'s Events</h2>
+<p><%=@pet.name%>'s Household: <%= %></p>
+<ul>
+<% if @pet.events.empty?%>
+    <p> This pet has no events, <%=@pet.name%> might need some attention. </p>
+  <%else%>
+    <%@pet.events.each do |event|%>
+    <li><p><%=event.event_type%> -- <%=event.time_of_event%></p> </li>
+    <%end%>
+  <%end%>
+  
+</ul>
+<p>
+<br><br>
+<a href="/events/new">Add Event</a>
+<br>
+<%if current_user.household_ids.include?(@pet.household_id) %>
+<a href="/pets/<%=@pet.id%>/edit">Edit this Pet.</a>
+</p>
+<form method="post" action="/pets/<%= @pet.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete"> 
+</form>
+<%end%>
+
+
+
+
+

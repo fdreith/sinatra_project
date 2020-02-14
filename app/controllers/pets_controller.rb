@@ -11,25 +11,35 @@ class PetsController < ApplicationController
             household_id: params["user"]["household_id"]
             )
         if @pet.save
-            redirect to "/households/#{params["user"]["household_id"]}"
+            redirect to "/pets/#{@pet.id}"
         else
             flash[:error_message] = "A unique name is required to create a pet."
             redirect '/pets/new'
         end
+    end
+    
+    get '/pets/:id' do 
+        @pet = Pet.find(params[:id])
+        @household = Household.find_by
+        erb :'/pets/show'
     end
 
     get '/pets/:id/edit' do 
         @pet = Pet.find(params[:id])
         erb :'/pets/edit'
     end
-    
-    get '/pets/:id' do 
-        @pet = Pet.find(params[:id])
-        erb :'/pets/show'
-    end
 
     patch '/pets/:id' do 
-    
+        binding.pry
+        pet = Pet.find(params[:id])
+        pet.update(name: params["pet"]["name"], household_id: params["pet"]["household_id"])  
+        redirect to "/pets/#{pet.id}"
+    end
+
+    delete '/pets/:id/delete' do
+        @pet = Pet.find(params[:id])
+        @pet.delete
+        redirect to '/home' 
     end
     
 end
