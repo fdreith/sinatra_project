@@ -1,14 +1,7 @@
 <div class="flash">
     <% if flash[:error_message]%>
-        <h3 style="color: red:"><%=flash[:error_message]%></h3>
+        <h3 style="color: red;"><%=flash[:error_message]%></h3>
     <% elsif flash[:sucess_message]%>
-        <h3 style="color: green:"><%=flash[:sucess_message]%></h3>
+        <h3 style="color: green;"><%=flash[:sucess_message]%></h3>
     <%end%>
 </div>
-
-<% flash.keys.each do |type| %>
-      <div data-alert class="flash <%= type %> alert-box radius">
-        <%= flash[type] %>
-        <a href="#" class="close">&times;</a>
-      </div>
-    <% end %>

@@ -3,7 +3,8 @@
 <h3>Select an existing Household or create a new one below.</h3>
 
     <% @households.each do |household| %>
-        <input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %><br>
+        <li><input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %></li>
+        <br>
     <% end %>
     <br>
 
