@@ -19,20 +19,4 @@ class SessionsController < ApplicationController
         redirect to '/'
     end
 
-    get '/signup' do
-        @households = Household.all
-        erb :'sessions_view/signup'
-    end
-    
-    post '/signup' do
-        @user = User.new(username: params["user"]["username"], password: params["user"]["password"], household_id: ["user"]["household_id".to_i])
-        if user.save
-            session[:user_id]=user.id
-            redirect to '/home'
-        else
-            erb :error
-            redirect to '/signup'
-        end
-    end
-
 end

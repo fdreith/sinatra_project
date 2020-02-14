@@ -13,16 +13,12 @@ class ApplicationController < Sinatra::Base
     redirect to '/login'
   end
 
-  get '/home' do 
-    erb :home
-end
-
   def logged_in?
     !!current_user
   end
 
   def current_user
-    @current_user ||= User.find_by(id: session[:id]) #or :user_id
+    @current_user ||= User.find_by(id: session[:user_id]) 
   end
 
   def redirect_if_not_logged_in
