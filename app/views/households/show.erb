@@ -13,8 +13,15 @@
 <br><br>
 <a href="/pets/new">Add Pets</a>
 <br><br>
+<%if @household.owner_id == current_user.id %>
 <a href="/households/<%=@household.id%>/edit">Edit this Household.</a>
 </p>
+<form method="post" action="/households/<%= @household.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete"> 
+</form>
+<%end%>
+
 
 
 
