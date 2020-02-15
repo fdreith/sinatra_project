@@ -1,4 +1,4 @@
-<h1>Pets of <%=@household.name%></h1>
+<h2>Pets of <%=@household.name%></h2>
 <ul>
 <% if @household.pets.empty?%>
     <p> This household current has no pets. </p>
@@ -20,6 +20,8 @@
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="delete"> 
 </form>
+<%else%>
+  <a href="/users/<%=current_user.id%>/edit">Remove This House From My Households</a>
 <%end%>
 
 
