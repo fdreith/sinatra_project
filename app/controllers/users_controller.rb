@@ -12,18 +12,15 @@ class UsersController < ApplicationController
             redirect to '/home'
         else
             flash[:error_message] = "You must enter a username and password, and your username must be unique."
+            redirect to '/signup'
         end
     end
 
     get '/home' do 
-        if logged_in? 
-            user = User.find(current_user.id)
-            @households = user.households
-            erb :'users/home'
-        else
-            flash[:error_message] = "You must be logged in to view your home."
-            redirect to '/'
-        end
+        redirect_if_not_logged_in
+        user = User.find(current_user.id)
+        @households = user.households
+        erb :'users/home'
     end
 
     get '/users/edit' do 
@@ -34,7 +31,6 @@ class UsersController < ApplicationController
     end
 
     patch '/users/:id' do 
-        binding.pry
         user = User.find(params[:id])
         user.update(username: params["name"]) 
         if !params["user"]["household_ids"].empty?

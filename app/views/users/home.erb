@@ -1,16 +1,13 @@
-<% if logged_in? %>
-    <h1><%= current_user && current_user.username %>'s Critter Sitter Homepage</h1>
-    <br>
-    <h4>Your Household(s):</h4>
-    <ul>
+<h1><%= current_user.username %>'s Critter Sitter Homepage</h1>
+<br>
+<h4>Your Household(s):</h4>
+<ul>
     <%@households.each do |household|%>
     <li><a href="/households/<%=household.id%>"><%= household.name %></a></li>
     <%end%>
-    </ul>
-    <br><br>
+</ul>
+<br><br>
 
-    <p> If you don't see your Household,  <a href="/households/new">Join or Create a Household</a>. </p>
-<% else %>
-    You Must <a href="/">Log In</a> to View Your Household.
-<% end %>
+<p> If you don't see your Household,  <a href="/households/new">Join or Create a Household</a>. </p>
+
 
