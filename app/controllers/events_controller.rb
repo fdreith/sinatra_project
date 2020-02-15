@@ -16,12 +16,6 @@ class EventsController < ApplicationController
         @pet = @event.pet
         erb :'/events/edit'
     end
-    
-    get '/events/:id' do 
-        redirect_if_not_logged_in
-        @event = Event.find(params[:id])
-        erb :'/events/show'
-    end
 
     patch '/events/:id' do 
         @event = Event.find(params[:id])
