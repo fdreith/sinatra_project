@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
 
     get '/pets/new' do
+        redirect_if_not_logged_in
         erb :'pets/new'
     end
 
@@ -19,20 +20,21 @@ class PetsController < ApplicationController
     end
     
     get '/pets/:id' do 
+        redirect_if_not_logged_in
         @pet = Pet.find(params[:id])
-        @household = Household.find_by
+        @household = @pet.household
         erb :'/pets/show'
     end
 
     get '/pets/:id/edit' do 
+        redirect_if_not_logged_in
         @pet = Pet.find(params[:id])
         erb :'/pets/edit'
     end
 
     patch '/pets/:id' do 
-        binding.pry
         pet = Pet.find(params[:id])
-        pet.update(name: params["pet"]["name"], household_id: params["pet"]["household_id"])  
+        pet.update(name: params["pet"]["name"], species: params["pet"]["species"], household_id: params["pet"]["household_id"])  
         redirect to "/pets/#{pet.id}"
     end
 

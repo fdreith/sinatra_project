@@ -1,6 +1,7 @@
 class HouseholdsController < ApplicationController
 
     get '/households/new' do
+        redirect_if_not_logged_in
         @households = Household.all
         erb :'households/new'
     end
@@ -19,11 +20,13 @@ class HouseholdsController < ApplicationController
     end
 
     get '/households/:id' do 
+        redirect_if_not_logged_in
         @household = Household.find(params[:id])
         erb :'/households/show'
     end
 
     get '/households/:id/edit' do 
+        redirect_if_not_logged_in
         @household = Household.find(params[:id])
         erb :'/households/edit'
     end
