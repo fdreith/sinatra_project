@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
             session[:user_id]=user.id
             redirect to "/home"
         else
-            erb :error
+            flash[:error_message] = "Incorrect Username or Password."
+            redirect to '/login'
         end
     end
 
