@@ -6,7 +6,7 @@
 <ul>
 <h4><%=@pet.name%>'s Events:</h4>
 <% if @pet.events.empty?%>
-    <p> This pet has no events, <%=@pet.name%> might need some attention. </p>
+    <p> This pet has no events today. <%=@pet.name%> might need some attention. </p>
   <%else%>
     <ul>
     <%@pet.events.each do |event|%>
@@ -19,19 +19,17 @@
 </ul>
 <br>
 <form method="post" action="/events"> 
-  <label>Add an Event:</label>
-  <input type="text" name="event" id="event">
-  <input type="hidden" value="<%=@pet.id%>" name="pet_id" />
+  <h4>Add an Event:</h4><br>
+  <label>Event Type:</label>
+  <input type="text" name="event" id="event"><br>
+  <label>Event Details:</label>
+  <input type="text" name="details" id="details">
+  <input type="hidden" value="<%=@pet.id%>" name="pet_id" /><br>
   <input type="submit" value="Submit">
 </form>
 <br>
 <%if current_user.household_ids.include?(@pet.household_id) %>
 <a href="/pets/<%=@pet.id%>/edit">Edit Pet</a>
-
-<form method="post" action="/pets/<%= @pet.id %>/delete">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="delete"> 
-</form>
 <%end%>
 
 
