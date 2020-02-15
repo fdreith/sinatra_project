@@ -1,18 +1,8 @@
 class EventsController < ApplicationController
 
-    get '/events' do
-        redirect_if_not_logged_in
-        @events = Event.all
-        erb :'events/index'
-    end
-
-    get '/events/new' do
-        redirect_if_not_logged_in
-        erb :'events/new'
-    end
-
     post '/events' do
-        
+        @event = Event.create(pet_id: params["pet_id"], event_type: params["event"])
+        redirect to "/pets/#{params["pet_id"]}"
     end
 
     get '/events/:id/edit' do 
