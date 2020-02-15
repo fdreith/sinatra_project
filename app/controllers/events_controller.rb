@@ -2,7 +2,12 @@ class EventsController < ApplicationController
 
     post '/events' do
         @event = Event.create(pet_id: params["pet_id"], event_type: params["event"])
-        redirect to "/pets/#{params["pet_id"]}"
+        if @event.save 
+            redirect to "/pets/#{params["pet_id"]}"
+        else 
+            flash[:error_message] = "You must include an event type, for example, 'feed'."
+            redirect to "/pets/#{params["pet_id"]}"
+        end
     end
 
     get '/events/:id/edit' do 
