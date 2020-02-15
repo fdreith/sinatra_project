@@ -19,6 +19,7 @@
 <br>
 <%if current_user.household_ids.include?(@pet.household_id) %>
 <a href="/pets/<%=@pet.id%>/edit">Edit this Pet.</a>
+
 <form method="post" action="/pets/<%= @pet.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="delete"> 

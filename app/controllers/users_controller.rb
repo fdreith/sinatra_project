@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
     
     post '/signup' do
-        user = User.new(username: params["user"]["username"], password: params["user"]["password"])
+        user = User.new(username: params["user"]["username"].strip, password: params["user"]["password"])
         if user.save
             session[:user_id]=user.id
             redirect to '/home'

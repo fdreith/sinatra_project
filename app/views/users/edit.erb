@@ -1,7 +1,7 @@
+<h1> Update Your Profile</h1>
+
 <form action="/users/<%=@user.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-
-<h1> Update Your Profile</h1>
 
     <label>Update Username: </label>
     <input type="text" name="name" id="name" value="<%=@user.username%>">
@@ -15,4 +15,10 @@
     <br>
     <br>
     <input type="submit" value="Update Profile">
+</form>
+
+<form method="post" action="/users/<%=@user.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete"> 
+
 </form>
