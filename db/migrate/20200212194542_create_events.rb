@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.integer :pet_id
       t.string :event_type
-      t.datetime :time_of_event
+      t.string :details
 
       t.timestamps null: false
     end
