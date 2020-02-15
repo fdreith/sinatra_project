@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
     post '/events' do
-        @event = Event.create(pet_id: params["pet_id"], event_type: params["event"])
+        @event = Event.create(pet_id: params["pet_id"], event_type: params["event"], details: params["details"])
         if @event.save 
             redirect to "/pets/#{params["pet_id"]}"
         else 
@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     get '/events/:id/edit' do 
         redirect_if_not_logged_in
         @event = Event.find(params[:id])
+        @pet = @event.pet
         erb :'/events/edit'
     end
     
@@ -23,15 +24,15 @@ class EventsController < ApplicationController
     end
 
     patch '/events/:id' do 
-        event = Event.find(params[:id])
-        event.update()  
-        redirect to "/events/#{event.id}"
+        @event = Event.find(params[:id])
+        @event.update(event_type: params["event"], details: params["details"])  
+        redirect to "/pets/#{@event.pet.id}"
     end
 
     delete '/events/:id/delete' do
         @event = Event.find(params[:id])
         @event.delete
-        redirect to '/home' 
+        redirect to "/pets/#{@event.pet.id}"
     end
     
 end
