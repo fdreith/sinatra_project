@@ -9,8 +9,14 @@
     <p> This pet has no events today. <%=@pet.name%> might need some attention. </p>
   <%else%>
     <ul>
-    <%@pet.events.each do |event|%>
+    <%@events.each do |event|%>
       <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at%>
+      <br>
+      <% if event.details == nil %>
+          No deatils. 
+      <%else%>
+          <%=event.details%>
+      <%end%>
       <br>
     <%end%>
     </ul>
@@ -28,6 +34,7 @@
   <input type="submit" value="Submit">
 </form>
 <br>
+<a href="/households/<%=@household.id%>">Back to Household</a><br>
 <%if current_user.household_ids.include?(@pet.household_id) %>
 <a href="/pets/<%=@pet.id%>/edit">Edit Pet</a>
 <%end%>
