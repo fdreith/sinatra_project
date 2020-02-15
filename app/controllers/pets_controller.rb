@@ -9,7 +9,8 @@ class PetsController < ApplicationController
         @pet = Pet.create(
             name: params["pet"]["name"], 
             species: params["pet"]["species"], 
-            household_id: params["user"]["household_id"]
+            household_id: params["user"]["household_id"],
+            owner_id: current_user.id
             )
         if @pet.save
             redirect to "/pets/#{@pet.id}"

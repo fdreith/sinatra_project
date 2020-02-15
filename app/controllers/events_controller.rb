@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
     post '/events' do
-        @event = Event.create(pet_id: params["pet_id"], event_type: params["event"], details: params["details"])
+        @event = Event.create(pet_id: params["pet_id"], event_type: params["event"], details: params["details"], owner_id: current_user.id)
         if @event.save 
             redirect to "/pets/#{params["pet_id"]}"
         else 
