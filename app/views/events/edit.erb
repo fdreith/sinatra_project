@@ -1,19 +1,21 @@
 <h1><%=@pet.name%> was <%=@event.event_type%></h1>
+
 <h3>at <%=@event.created_at%></h3>
 <h3>Details: <%=@event.details%></h3>
 
 <form action="/events/<%=@event.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-<h3>Edit Event:</h3><br>
-  <label>Event Type:</label>
-  <input type="text" name="event" id="event" value="<%=@event.event_type%>"><br>
-  <label>Event Details:</label>
-  <input type="text" name="details" id="details" value="<%=@event.details%>">
-  <input type="submit" value="Submit">
+    <h3>Edit Event:</h3>
+    <br>
+    <label>Event Type:</label>
+    <input type="text" name="event" id="event" value="<%=@event.event_type%>">
+    <br>
+    <label>Event Details:</label>
+    <input type="text" name="details" id="details" value="<%=@event.details%>">
+    <input type="submit" value="Submit">
 </form>
-
-<form method="post" action="/events/<%= @event.id %>/delete"><br>
+<br>
+<form method="post" action="/events/<%= @event.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Event"> 
 </form>
-<br>

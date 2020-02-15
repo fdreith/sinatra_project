@@ -1,25 +1,23 @@
 <h1>Pets of <%=@household.name%></h1>
-<ul>
+
 <% if @household.pets.empty?%>
-    <p> This household current has no pets. </p>
+    This household current has no pets.
   <%else%>
     <%@household.pets.each do |pet|%>
-    <li><a href="/pets/<%=pet.id%>"><%=pet.name%></a></li> 
+     <ul><a href="/pets/<%=pet.id%>"><%=pet.name%></a></ul>
     <%end%>
   <%end%>
-  
-</ul>
-<p>
-<br><br>
+<br>
+<br>
 <a href="/pets/new">Add Pets</a>
-<br><br>
+<br>
+<br>
 <%if @household.owner_id == current_user.id %>
-<a href="/households/<%=@household.id%>/edit">Edit this Household.</a>
-</p>
-<form method="post" action="/households/<%= @household.id %>/delete">
+  <a href="/households/<%=@household.id%>/edit">Edit this Household.</a>
+  <form method="post" action="/households/<%= @household.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="delete"> 
-</form>
+  </form>
 <%else%>
   <a href="/users/<%=current_user.id%>/edit">Remove This House From My Households</a>
 <%end%>

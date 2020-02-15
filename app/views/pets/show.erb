@@ -3,16 +3,15 @@
 <br>
 <h4>Household: <%=@household.name%> </h4>
 <br>
-<ul>
 <h4><%=@pet.name%>'s Events:</h4>
-<% if @pet.events.empty?%>
-    <p> This pet has no events today. <%=@pet.name%> might need some attention. </p>
+<%if @pet.events.empty?%>
+    This pet has no events today. <%=@pet.name%> might need some attention.
   <%else%>
     <ul>
     <%@events.each do |event|%>
-      <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at%>
+       • <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at%>
       <br>
-      <% if event.details == nil %>
+      <%if event.details == nil %>
           No deatils. 
       <%else%>
           <%=event.details%>
@@ -21,8 +20,6 @@
     <%end%>
     </ul>
   <%end%>
-  
-</ul>
 <br>
 <form method="post" action="/events"> 
   <h4>Add an Event:</h4><br>
@@ -36,7 +33,7 @@
 <br>
 <a href="/households/<%=@household.id%>">Back to Household</a><br>
 <%if current_user.household_ids.include?(@pet.household_id) %>
-<a href="/pets/<%=@pet.id%>/edit">Edit Pet</a>
+    <a href="/pets/<%=@pet.id%>/edit">Edit Pet</a>
 <%end%>
 
 

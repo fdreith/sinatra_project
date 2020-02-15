@@ -2,23 +2,20 @@
 
 <form action="/users/<%=@user.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-
     <label>Update Username: </label>
     <input type="text" name="name" id="name" value="<%=@user.username%>">
-    <br><br>
-    <h4>Update Your Household(s)</h4>
     <br>
+    <br>
+    <h3>Update Your Household(s)</h3>
         <% @households.each do |household| %>
-        <li><input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %></li>
+        <ul><input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %></ul>
         <br>
     <% end %>
     <br>
-    <br>
     <input type="submit" value="Update Profile">
 </form>
-
+<br>
 <form method="post" action="/users/<%=@user.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="delete"> 
-
 </form>

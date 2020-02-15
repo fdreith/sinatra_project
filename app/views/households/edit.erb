@@ -1,4 +1,4 @@
-<h2> Update Household</h2>
+<h1> Update Household</h1>
 
 <form action="/households/<%=@household.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
@@ -6,10 +6,8 @@
     <label>Update Household Name: </label>
     <br>
     <input type="text" name="household[name]" id="household_name" value="<%=@household.name%>">
-    <br><br>
-
     <br>
-
+    <br>
     <input type="submit" value="Update Household">
 </form>
 
