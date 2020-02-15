@@ -14,20 +14,20 @@ class HouseholdsController < ApplicationController
             @household = Household.create(name: params["household"]["name"], owner_id: current_user.id)
             current_user.update(household_ids: current_user.household_ids.push(@household.id))
         end
-
         redirect to '/home'
-
     end
 
     get '/households/:id' do 
         redirect_if_not_logged_in
         @household = Household.find(params[:id])
+        redirect_if_not_authorized(@household.users)
         erb :'/households/show'
     end
 
     get '/households/:id/edit' do 
         redirect_if_not_logged_in
         @household = Household.find(params[:id])
+        redirect_if_not_authorized(@household.owner)
         erb :'/households/edit'
     end
 

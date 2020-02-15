@@ -29,8 +29,23 @@ class ApplicationController < Sinatra::Base
 
   def redirect_if_not_logged_in
     if !logged_in?
+      flash[:error_message] = "You must be logged in to do that."
       redirect '/'
     end
+  end
+
+  def redirect_if_not_authorized(authorized_user)
+    if current_user.id != authorized_user
+      flash[:error_message] = "You are not authorized to do that."
+      redirect to '/home'
+    else
+      redirect to '/home'
+    end
+
+  end
+
+  def set_owner
+
   end
 
 end

@@ -5,5 +5,6 @@ class Pet < ActiveRecord::Base
 
     belongs_to :household
     has_many :events
+    belongs_to :owner, class_name: "User"
 
 end
