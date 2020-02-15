@@ -1,16 +1,19 @@
 <h1><%=@pet.name%></h1>
-<h4><%=@pet.name%>'s Species: <%=@pet.species%> </h4>
+<h4>Species: <%=@pet.species%> </h4>
 <br>
-<h4><%=@pet.name%>'s Household: <%=@household.name%> </h4>
+<h4>Household: <%=@household.name%> </h4>
 <br>
 <ul>
 <h4><%=@pet.name%>'s Events:</h4>
 <% if @pet.events.empty?%>
     <p> This pet has no events, <%=@pet.name%> might need some attention. </p>
   <%else%>
+    <ul>
     <%@pet.events.each do |event|%>
-      <%=event.event_type%> -- <%=event.time_of_event%>
+      <%=event.event_type%>  at  <%=event.created_at%>
+      <br>
     <%end%>
+    </ul>
   <%end%>
   
 </ul>
