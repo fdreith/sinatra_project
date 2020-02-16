@@ -8,11 +8,11 @@
 <%end%>
 <br>
 <h4><%=@pet.name%>'s Events:</h4>
-<%if @pet.events.empty?%>
+<%if @events_today.empty?%>
     This pet has no events today. <%=@pet.name%> might need some attention.
-  <%else%>
+<%else%>
     <ul>
-    <%@events.each do |event|%>
+    <%@events_today.each do |event|%>
       <li> • <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%>
           <%if event.details == nil %>
               No deatils. 
@@ -20,10 +20,9 @@
               -  <%=event.details%>
           <%end%>
       </li>
-      <%end%>
     <%end%>
     </ul>
-  <%end%>
+<%end%>
 <br>
 <br>
 <form method="post" action="/events"> 
@@ -36,11 +35,6 @@
   <input type="submit" value="Submit Event">
 </form>
 <br>
- <form action="/households/<%=@household.id%>" method="get">
-  <input type="submit" value="Back to Household">
-  </form>
-
-
-
-
-
+<form action="/households/<%=@household.id%>" method="get">
+<input type="submit" value="Back to Household">
+</form>

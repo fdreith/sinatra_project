@@ -24,8 +24,9 @@ class PetsController < ApplicationController
         redirect_if_not_logged_in
         @pet = Pet.find(params[:id])
         @household = @pet.household
-        binding.pry
-        @events_today = Event.today
+        @events_today = @pet.events.map do |event| 
+            event if event.date == Date.today
+        end
         erb :'/pets/show'
     end
 
@@ -39,7 +40,10 @@ class PetsController < ApplicationController
 
     patch '/pets/:id' do 
         pet = Pet.find(params[:id])
-        pet.update(name: params["pet"]["name"], species: params["pet"]["species"], household_id: params["pet"]["household_id"])  
+        pet.update(name: params["pet"]["name"], species: params["pet"]["species"])
+        if params.include?(["pet"]["household_id".to_i])
+            pet.update(household_id: params["pet"]["household_id"])
+        end 
         redirect to "/pets/#{pet.id}"
     end
 
