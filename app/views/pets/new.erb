@@ -9,13 +9,14 @@
     <input type="text" name="pet[species]" id="pet_species" value="">
     <br>
     <br>
-    <h4>Add Your Pet to a Household</h4>
+    <h4>Add Your Pet to a Household (choose one)</h4>
     <ul>
         <% current_user.households.each do |household| %>
-        <li><input type="checkbox" name="user[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
+        <li><input type="checkbox" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
     <% end %>
     </ul>
     <br>
+    <input type="hidden" value="Homeless" name="pet[household_id]" /><br>
     <input type="submit" value="Create Pet">
 </form>
  
