@@ -13,18 +13,15 @@ class PetsController < ApplicationController
                 household_id: params["pet"]["household_id"],
                 owner_id: current_user.id
                 )
+            if @pet.save
+                redirect to "/home"
+            else
+                flash[:error_message] = "A unique name is required to create a pet."
+                redirect '/pets/new'
+            end
         else
-            @pet = Pet.create(
-                name: params["pet"]["name"], 
-                species: params["pet"]["species"], 
-                owner_id: current_user.id
-                )
-        end
-        if @pet.save
-            redirect to "/pets/#{@pet.id}"
-        else
-            flash[:error_message] = "A unique name is required to create a pet."
-            redirect '/pets/new'
+            flash[:error_message] = "Your pet must have a home, if you do not have any homes yet, please add one and then add your pet."
+            redirect to '/pets/new'
         end
     end
     
@@ -32,12 +29,10 @@ class PetsController < ApplicationController
         redirect_if_not_logged_in
         @pet = Pet.find(params[:id])
         if !!@pet.household
-            @household_name = @pet.household.name
             @household = @pet.household
-            @household_id = @household.id
+            @household_name = @household.name
         else 
             @household_name = "Homeless"
-            @household = ""
         end
         @events_today = @pet.events.map do |event| 
             event if event.date == Date.today

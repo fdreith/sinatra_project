@@ -7,22 +7,43 @@
     <%end%>
     </ul>
 <br>
+<form action="/users/edit" method="get">
+<input type="submit" value="Add Existing Household">
+</form>
 <form action="/households/new" method="get">
 <input type="submit" value="Create a New Household">
 </form>
 <br>
 <br>
 <br>
-<h3>Your Pet(s):</h3>
-    <ul>
-    <%@pets.each do |pet|%>
-        <%if pet.owner_id == @user.id%>
-    <li> • <a href="/pets/<%=pet.id%>"><%= pet.name %></a></li>
+<%if !@households.empty? %>
+    <h3>Your Pet(s):</h3>
+        <ul>
+        <%@pets.each do |pet|%>
+       
+            <li> <h4><a href="/pets/<%=pet.id%>"><%= pet.name %></a></h4></li>
+            <%if !!pet.events%>
+                <ul>
+                <%pet.events.each do |event|%>
+                    <li> • <a href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
+                    </li>
+                <%end%>
+                </ul>
+            <%else%>
+                <%=@pet.name%> has no events. They might need some attention.
+            <%end%>
         <%end%>
-    <%end%>
-    </ul>
-<br>
-<form action="/pets/new" method="get">
-<input type="submit" value="Create a New Pet">
-</form>
+        </ul>
 
+
+        
+
+
+
+
+    <br>
+    <form action="/pets/new" method="get">
+    <input type="submit" value="Create a New Pet">
+    </form>
+
+<%end%>
