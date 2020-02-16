@@ -35,6 +35,10 @@ class UsersController < ApplicationController
         user.update(username: params["name"]) 
         if !params["user"]["household_ids"].empty?
             current_user.household_ids = params["user"]["household_ids"]
+        else
+            current_user.household_ids = []
+            flash[:success_message] = "You sucessfully removed all of your Households."
+            redirect to '/home'
         end
         redirect to '/home'
     end

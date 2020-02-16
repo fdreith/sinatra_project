@@ -7,12 +7,12 @@ class HouseholdsController < ApplicationController
     end
 
     post '/households' do
-        if !params["user"]["household_ids"].empty?
-            current_user.household_ids = params["user"]["household_ids"]
-        end
         if !params["household"]["name"].empty?
             @household = Household.create(name: params["household"]["name"], owner_id: current_user.id)
             current_user.update(household_ids: current_user.household_ids.push(@household.id))
+        else 
+            flash[:error_message] = "You must type in a unique name for your Household, or join an existing Household by checking the box of the Household you would like to join."
+            redirect to '/households/new'
         end
         redirect to '/home'
     end

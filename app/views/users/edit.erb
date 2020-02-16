@@ -7,6 +7,9 @@
     <br>
     <br>
     <h3>Update Your Household(s)</h3>
+    Check the Households you would like to join, and uncheck the households you would not like to join. 
+    <br>
+    <br>
         <% @households.each do |household| %>
         <ul><input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %></ul>
         <br>
@@ -17,5 +20,5 @@
 <br>
 <form method="post" action="/users/<%=@user.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="delete"> 
+    <input type="submit" value="Delete Profile"> 
 </form>

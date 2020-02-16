@@ -1,17 +1,11 @@
 <h1>Select an existing Household or create a new one below.</h1>
 
 <form action="/households" method="post">
-    <% @households.each do |household| %>
-        <li><input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %></li>
-        <br>
-    <% end %>
-    <br>
-
     <label>New Household Name: </label>
     <br>
     <input type="text" name="household[name]" id="household_name">
     <br>
     <br>
 
-    <input type="submit" value="Create/Update Household(s)">
+    <input type="submit" value="Create Household">
 </form>
