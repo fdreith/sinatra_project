@@ -7,6 +7,11 @@
     <%end%>
     </ul>
 <br>
+<form action="/households/new" method="get">
+<input type="submit" value="Create a New Household">
+<br>
+<br>
+<br>
 <h3>Your Pet(s):</h3>
     <ul>
     <%@pets.each do |pet|%>
@@ -16,8 +21,7 @@
     <%end%>
     </ul>
 <br>
-<br>
-
-<a href="/users/edit">Join an Existing Household</a> or <a href="/households/new">Create a New Household</a>
-
+<form action="/pets/new" method="get">
+<input type="submit" value="Create a New Pet">
+</form>
 

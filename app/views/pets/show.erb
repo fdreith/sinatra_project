@@ -1,7 +1,11 @@
 <h1><%=@pet.name%></h1>
 <h4>Species: <%=@pet.species%> </h4>
-<br>
 <h4>Household: <%=@household.name%> </h4>
+<%if @pet.owner_id == current_user.id %>
+  <form action="/pets/<%=@pet.id%>/edit" method="get">
+  <input type="submit" value="Edit Pet">
+  </form>
+<%end%>
 <br>
 <h4><%=@pet.name%>'s Events:</h4>
 <%if @pet.events.empty?%>
@@ -9,13 +13,15 @@
   <%else%>
     <ul>
     <%@events.each do |event|%>
-      <li> • <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at%></li>
-      <br>
+      <% if event.today %>
+      <li> • <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at%>
           <%if event.details == nil %>
               No deatils. 
           <%else%>
-              <%=event.details%>
+              -  <%=event.details%>
           <%end%>
+      </li>
+      <%end%>
     <%end%>
     </ul>
   <%end%>
@@ -28,13 +34,12 @@
   <label>Event Details:</label>
   <input type="text" name="details" id="details">
   <input type="hidden" value="<%=@pet.id%>" name="pet_id" /><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit Event">
 </form>
 <br>
-<a href="/households/<%=@household.id%>">Back to Household</a><br>
-<%if @pet.owner_id == current_user.id %>
-    <a href="/pets/<%=@pet.id%>/edit">Edit Pet</a>
-<%end%>
+ <form action="/households/<%=@household.id%>" method="get">
+  <input type="submit" value="Back to Household">
+  </form>
 
 
 

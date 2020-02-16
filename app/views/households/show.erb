@@ -11,17 +11,18 @@
   <%end%>
 <br>
 <br>
-<a href="/pets/new">Add Pets</a>
-<br>
+  <form action="/pets/new" method="get">
+  <input type="submit" value="Create New Pet">
+  </form>
 <br>
 <%if @household.owner_id == current_user.id %>
-  <a href="/households/<%=@household.id%>/edit">Edit this Household.</a>
-  <form method="post" action="/households/<%= @household.id %>/delete">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="delete"> 
+  <form action="/households/<%=@household.id%>/edit" method="get">
+  <input type="submit" value="Edit Household">
   </form>
 <%else%>
-  <a href="/users/edit">Remove This House From My Households</a>
+  <form action="/users/edit" method="get">
+  <input type="submit" value="Remove this household">
+  </form>
 <%end%>
 
 

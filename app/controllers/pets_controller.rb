@@ -24,7 +24,8 @@ class PetsController < ApplicationController
         redirect_if_not_logged_in
         @pet = Pet.find(params[:id])
         @household = @pet.household
-        @events = @pet.events
+        binding.pry
+        @events_today = Event.today
         erb :'/pets/show'
     end
 

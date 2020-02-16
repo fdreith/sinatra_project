@@ -11,6 +11,11 @@
     <input type="submit" value="Update Household">
 </form>
 
+<form method="post" action="/households/<%= @household.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Household"> 
+</form>
+
 
 
 
