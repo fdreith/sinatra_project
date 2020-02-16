@@ -13,7 +13,6 @@
   <%else%>
     <ul>
     <%@events.each do |event|%>
-      <% if event.today %>
       <li> • <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%>
           <%if event.details == nil %>
               No deatils. 
