@@ -9,20 +9,20 @@
   <%else%>
     <ul>
     <%@events.each do |event|%>
-       • <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at%>
+      <li> • <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at%></li>
       <br>
-      <%if event.details == nil %>
-          No deatils. 
-      <%else%>
-          <%=event.details%>
-      <%end%>
-      <br>
+          <%if event.details == nil %>
+              No deatils. 
+          <%else%>
+              <%=event.details%>
+          <%end%>
     <%end%>
     </ul>
   <%end%>
 <br>
+<br>
 <form method="post" action="/events"> 
-  <h4>Add an Event:</h4><br>
+  <h4>Add an Event:</h4>
   <label>Event Type:</label>
   <input type="text" name="event" id="event"><br>
   <label>Event Details:</label>

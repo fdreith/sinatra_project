@@ -6,12 +6,13 @@
     <br>
     <label>Update Pet Species: </label>
     <input type="text" name="pet[species]" id="pet_species" value="<%=@pet.species%>">
-    <br><br>
+    <br>
     <h4>Update Your Pet's Household (only check one box)</h4>
+    <ul>
         <% current_user.households.each do |household| %>
-        <li><input type="checkbox" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
-        <br>
+        <li> • <input type="checkbox" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
     <% end %>
+    </ul>
     <br>
     <input type="submit" value="Update Household">
 </form>

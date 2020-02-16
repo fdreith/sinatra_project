@@ -33,7 +33,8 @@ class UsersController < ApplicationController
     patch '/users/:id' do 
         user = User.find(params[:id])
         user.update(username: params["name"]) 
-        if !params["user"]["household_ids"].empty?
+        # if !params["user"]["household_ids"].empty?
+        if params.include?(["user"]["household_ids".to_i])
             current_user.household_ids = params["user"]["household_ids"]
         else
             current_user.household_ids = []

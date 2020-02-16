@@ -3,9 +3,11 @@
 <% if @household.pets.empty?%>
     This household current has no pets.
   <%else%>
+    <ul>
     <%@household.pets.each do |pet|%>
-     <ul><a href="/pets/<%=pet.id%>"><%=pet.name%></a></ul>
+     <li><a href="/pets/<%=pet.id%>"><%=pet.name%></a></li>
     <%end%>
+    </ul>
   <%end%>
 <br>
 <br>

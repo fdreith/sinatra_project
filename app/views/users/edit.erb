@@ -5,15 +5,14 @@
     <label>Update Username: </label>
     <input type="text" name="name" id="name" value="<%=@user.username%>">
     <br>
-    <br>
     <h3>Update Your Household(s)</h3>
-    Check the Households you would like to join, and uncheck the households you would not like to join. 
+    Check the households you would like to join, and uncheck the households you would like to remove from your households. 
     <br>
-    <br>
+        <ul>
         <% @households.each do |household| %>
-        <ul><input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %></ul>
-        <br>
-    <% end %>
+            <li><input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %></li>
+        <% end %>
+        </ul>
     <br>
     <input type="submit" value="Update Profile">
 </form>

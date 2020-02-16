@@ -1,9 +1,11 @@
 <h1><%= @user.username %>'s Critter Sitter Homepage</h1>
 
 <h3>Your Household(s):</h3>
+    <ul>
     <%@households.each do |household|%>
-    <ul><a href="/households/<%=household.id%>"><%= household.name %></a></ul>
+    <li> • <a href="/households/<%=household.id%>"><%= household.name %></a></li>
     <%end%>
+    </ul>
 <br>
 <br>
 
