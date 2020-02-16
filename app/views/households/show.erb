@@ -5,7 +5,26 @@
   <%else%>
     <ul>
     <%@household.pets.each do |pet|%>
-     <li> • <a href="/pets/<%=pet.id%>"><%=pet.name%></a></li>
+    <li><h4><a href="/pets/<%=pet.id%>"><%=pet.name%></a></h4></li>
+      <%if !!pet.events%>
+      <ul>
+      <%pet.events.each do |event|%>
+      <li> • <a href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
+        <%if event.details == nil %>
+            No deatils. 
+        <%else%>
+            -  <%=event.details%>
+        <%end%>
+        </li>
+      <%end%>
+      </ul>
+      <%else%>
+        <%=@pet.name%> has no events. They might need some attention.
+      <%end%>
+
+
+
+
     <%end%>
     </ul>
   <%end%>

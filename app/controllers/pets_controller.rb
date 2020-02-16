@@ -27,7 +27,6 @@ class PetsController < ApplicationController
         @events_today = @pet.events.map do |event| 
             event if event.date == Date.today
         end
-        binding.pry
         erb :'/pets/show'
     end
 
