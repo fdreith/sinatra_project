@@ -14,6 +14,7 @@ class EventsController < ApplicationController
         redirect_if_not_logged_in
         @event = Event.find(params[:id])
         @pet = @event.pet
+        redirect_if_not_authorized(@event.owner_id)
         erb :'/events/edit'
     end
 

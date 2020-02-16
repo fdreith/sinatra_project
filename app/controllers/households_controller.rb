@@ -20,14 +20,13 @@ class HouseholdsController < ApplicationController
     get '/households/:id' do 
         redirect_if_not_logged_in
         @household = Household.find(params[:id])
-        redirect_if_not_authorized(@household.users)
         erb :'/households/show'
     end
 
     get '/households/:id/edit' do 
         redirect_if_not_logged_in
         @household = Household.find(params[:id])
-        redirect_if_not_authorized(@household.owner)
+        redirect_if_not_authorized(@household.owner_id)
         erb :'/households/edit'
     end
 

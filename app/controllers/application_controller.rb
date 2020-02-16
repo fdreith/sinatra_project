@@ -38,14 +38,7 @@ class ApplicationController < Sinatra::Base
     if current_user.id != authorized_user
       flash[:error_message] = "You are not authorized to do that."
       redirect to '/home'
-    else
-      redirect to '/home'
     end
-
-  end
-
-  def set_owner
-
   end
 
 end

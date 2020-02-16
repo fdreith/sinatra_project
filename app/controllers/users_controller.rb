@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
     get '/home' do 
         redirect_if_not_logged_in
-        user = User.find(current_user.id)
-        @households = user.households
+        @user = User.find(current_user.id)
+        @households = @user.households
         erb :'users/home'
     end
 

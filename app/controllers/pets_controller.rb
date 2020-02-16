@@ -25,7 +25,6 @@ class PetsController < ApplicationController
         @pet = Pet.find(params[:id])
         @household = @pet.household
         @events = @pet.events
-        redirect_if_not_authorized(@household.users)
         erb :'/pets/show'
     end
 
@@ -33,7 +32,7 @@ class PetsController < ApplicationController
         redirect_if_not_logged_in
         @pet = Pet.find(params[:id])
         @household = @pet.household
-        redirect_if_not_authorized(@household.users)
+        redirect_if_not_authorized(@pet.owner_id)
         erb :'/pets/edit'
     end
 
