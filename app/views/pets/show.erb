@@ -8,20 +8,20 @@
 <%end%>
 <br>
 <h4><%=@pet.name%>'s Events:</h4>
-<%if @events_today.empty?%>
-    This pet has no events today. <%=@pet.name%> might need some attention.
+<%if !!@pet.events%>
+  <ul>
+  <%@pet.events.each do |event|%>
+    <li> • <a href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
+        <%if event.details == nil %>
+            No deatils. 
+        <%else%>
+            -  <%=event.details%>
+        <%end%>
+    </li>
+  <%end%>
+  </ul>
 <%else%>
-    <ul>
-    <%@events_today.each do |event|%>
-      <li> • <a href="/events/<%=event.id%>/edit"><%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%>
-          <%if event.details == nil %>
-              No deatils. 
-          <%else%>
-              -  <%=event.details%>
-          <%end%>
-      </li>
-    <%end%>
-    </ul>
+  <%=@pet.name%> has no events. They might need some attention.
 <%end%>
 <br>
 <br>
