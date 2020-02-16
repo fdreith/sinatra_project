@@ -20,6 +20,7 @@ class UsersController < ApplicationController
         redirect_if_not_logged_in
         @user = User.find(current_user.id)
         @households = @user.households
+        @pets = Pet.all
         erb :'users/home'
     end
 

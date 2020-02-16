@@ -7,6 +7,15 @@
     <%end%>
     </ul>
 <br>
+<h3>Your Pet(s):</h3>
+    <ul>
+    <%@pets.each do |pet|%>
+        <%if pet.owner_id == @user.id%>
+    <li> • <a href="/pets/<%=pet.id%>"><%= pet.name %></a></li>
+        <%end%>
+    <%end%>
+    </ul>
+<br>
 <br>
 
 <a href="/users/edit">Join an Existing Household</a> or <a href="/households/new">Create a New Household</a>
