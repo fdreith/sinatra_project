@@ -11,7 +11,7 @@ class UsersController < ApplicationController
             session[:user_id]=user.id
             redirect to '/home'
         else
-            flash[:error_message] = "You must enter a username and password, and your username must be unique."
+            flash[:warning_message] = "You must enter a username and password, and your username must be unique."
             redirect to '/signup'
         end
     end
@@ -38,15 +38,17 @@ class UsersController < ApplicationController
             current_user.household_ids = params["user"]["household_ids"]
         else
             current_user.household_ids = []
-            flash[:success_message] = "You sucessfully removed all of your Households."
+            flash[:warning_message] = "You have removed all of your Households."
             redirect to '/home'
         end
+        flash[:success_message] = "You sucessfully updated your Households."
         redirect to '/home'
     end
 
     delete '/users/:id/delete' do
         @user = User.find(params[:id])
         @user.delete
+        flash[:warning_message] = "You have deleted your account."
         redirect to '/' 
     end
 end
