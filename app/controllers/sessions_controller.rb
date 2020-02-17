@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     end
     
     post '/login' do
-        user = User.find_by(username: params["user"][":username"].strip) #OR params[:username]
+        user = User.find_by(username: params["user"][":username"].strip)
         if user && user.authenticate(params["user"][":password"])
             session[:user_id]=user.id
             redirect to "/home"
