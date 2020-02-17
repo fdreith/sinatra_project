@@ -3,7 +3,7 @@
 <h4>Household: <%=@household_name%> </h4>
 <%if @pet.owner_id == current_user.id %>
   <form action="/pets/<%=@pet.id%>/edit" method="get">
-  <input type="submit" value="Edit Pet">
+    <input type="submit" value="Edit Pet">
   </form>
 <%end%>
 <br>
@@ -25,8 +25,8 @@
 <%end%>
 <br>
 <br>
+<h4>Add an Event:</h4>
 <form method="post" action="/events"> 
-  <h4>Add an Event:</h4>
   <label>Event Type:</label>
   <input type="text" name="event" id="event"><br>
   <label>Event Details:</label>
@@ -36,5 +36,5 @@
 </form>
 <br>
 <form action="/home" method="get">
-<input type="submit" value="Back to Home">
+  <input type="submit" value="Back to Home">
 </form>

@@ -3,10 +3,9 @@
 <h3>at <%=@event.created_at%></h3>
 <h3>Details: <%=@event.details%></h3>
 
+<h3>Edit Event:</h3>
 <form action="/events/<%=@event.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-    <h3>Edit Event:</h3>
-    <br>
     <label>Event Type:</label>
     <input type="text" name="event" id="event" value="<%=@event.event_type%>">
     <br>
