@@ -8,8 +8,7 @@ class HouseholdsController < ApplicationController
 
     post '/households' do
         if !params["household"]["name"].empty?
-            @household = Household.create(name: params["household"]["name"], owner_id: current_user.id)
-            current_user.update(household_ids: current_user.household_ids.push(@household.id))
+            current_user.households.create(name: params["household"]["name"], owner_id: current_user.id)
         else 
             flash[:warning_message] = "You must type in a unique name for your Household, or join an existing Household by checking the box of the Household you would like to join."
             redirect to '/households/new'
@@ -34,7 +33,6 @@ class HouseholdsController < ApplicationController
     patch '/households/:id' do 
         household = Household.find(params[:id])
         household.update(params["household"])  
-        binding.pry
         flash[:success_message] = "Household Updated."
         redirect to '/home'
     end
