@@ -1,23 +1,30 @@
-<h1> Update Your Profile</h1>
+<h2> Update Your Profile</h2>
 
 <form action="/users/<%=@user.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
+<div class="input-field">
     <label>Update Username: </label>
     <input type="text" name="name" id="name" value="<%=@user.username%>">
+</div>    
     <br>
     <h3>Update Your Household(s)</h3>
     Check the households you would like to join, and uncheck the households you would like to remove from your households. 
     <br>
-        <ul>
-        <% @households.each do |household| %>
-            <li><input type="checkbox" name="user[household_ids][]" id="<%= household.id %>" value="<%= household.id %>" <%= 'checked' if household.users.include?(current_user) %>><%=household.name %></li>
-        <% end %>
-        </ul>
+ 
+    <% @households.each do |household| %>
+    <p>
+    <label for="<%= household.id %>">
+        <span><%=household.name %></span> 
+        <input type="checkbox" checked="<%= household.id %>" name="user[household_ids][]" id="<%= household.id %>"/>  
+
+    </label>
+    </p>
+    <% end %>
     <br>
-    <input type="submit" value="Update Profile">
+    <input type="submit" value="Update Profile" class="btn">
 </form>
 <br>
 <form method="post" action="/users/<%=@user.id%>/delete">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Profile"> 
+    <input id="hidden" type="hidden" name="_method" value="delete" class="btn">
+    <input type="submit" value="Delete Profile" class="btn"> 
 </form>

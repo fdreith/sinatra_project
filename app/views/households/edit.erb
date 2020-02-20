@@ -1,19 +1,18 @@
-<h1> Update Household</h1>
+<h2> Update Household</h2>
 
 <form action="/households/<%=@household.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-
+<div class="input-field">
     <label>Update Household Name: </label>
-    <br>
     <input type="text" name="household[name]" id="household_name" value="<%=@household.name%>">
+</div>
     <br>
-    <br>
-    <input type="submit" value="Update Household">
+    <input type="submit" value="Update Household" class="btn">
 </form>
 
 <form method="post" action="/households/<%= @household.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Household"> 
+    <input type="submit" value="Delete Household" class="btn"> 
 </form>
 
 

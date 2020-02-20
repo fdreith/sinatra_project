@@ -10,27 +10,50 @@
     <title>SinatraProject</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
-  <body>
-    <%= erb :navbar %>
-    <%= erb :flash %>
+  <body class="#e8f5e9 green lighten-5">
+    <nav class="#006064 cyan darken-4">
+      <div class="container">
+      <ul>
+        <% if logged_in? %>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/users/edit">Edit Profile</a></li>
+          <li><a href="/logout">Log Out</a></li>
+        <% end %>
+      </ul>
+      </div>
+    </nav>
 
-    <div class="wrapper">
+<div class="flash">
+    <% if flash[:warning_message]%>
+        <h3 style="color: red;"><%=flash[:warning_message]%></h3>
+    <% elsif flash[:success_message]%>
+        <h3 style="color: green;"><%=flash[:success_message]%></h3>
+    <%end%>
+</div>
+
+<div class="container">
       
   
-        <%= yield %>
+     <%= yield %>
 
       <footer class="branding">
         <small>&copy; 2020 <strong>SinatraProject</strong></small>
       </footer>
-    </div>
+</div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
     <!--[if lt IE 7]>
       <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
       <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
     <![endif]-->
+
   </body>
 </html>
