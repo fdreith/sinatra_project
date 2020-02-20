@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
 
     get '/signup' do
-        @households = Household.all
-        erb :'users/signup'
+        if !logged_in?
+            @households = Household.all
+            erb :'users/signup'
+        else
+            redirect to '/home'
+        end
     end
     
     post '/signup' do
