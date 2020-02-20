@@ -14,7 +14,7 @@
         <h4>Update Your Pet's Household (only check one box)</h4>
         <ul>
             <% current_user.households.each do |household| %>
-            <li><input type="checkbox" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
+            <li><input type="radio" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
         <% end %>
         </ul>
         <br>
