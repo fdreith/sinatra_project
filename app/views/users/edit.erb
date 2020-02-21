@@ -14,9 +14,8 @@
     <% @households.each do |household| %>
     <p>
     <label for="<%= household.id %>">
+        <input type="checkbox" <%='checked' if household.users.include?(current_user)%> name="user[household_ids][]" id="<%= household.id %>" value="<%=household.id%>"/>  
         <span><%=household.name %></span> 
-        <input type="checkbox" checked="<%= household.id %>" name="user[household_ids][]" id="<%= household.id %>"/>  
-
     </label>
     </p>
     <% end %>
