@@ -7,12 +7,12 @@
     <input type="text" name="household[name]" id="household_name" value="<%=@household.name%>">
 </div>
     <br>
-    <input type="submit" value="Update Household" class="btn">
+    <input type="submit" value="Update Household" class="waves-effect waves-light btn-small">
 </form>
 
 <form method="post" action="/households/<%= @household.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Household" class="btn"> 
+    <input type="submit" value="Delete Household" class="waves-effect waves-light btn-small"> 
 </form>
 
 

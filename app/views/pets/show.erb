@@ -3,11 +3,7 @@
 <h6>Household: <%=@household_name%> </h6>
 <%if @pet.owner_id == current_user.id %>
   <form action="/pets/<%=@pet.id%>/edit" method="get">
-<<<<<<< HEAD
-    <input type="submit" value="Edit Pet">
-=======
-  <input type="submit" value="Edit Pet" class="btn">
->>>>>>> original-css
+  <input type="submit" value="Edit Pet" class="waves-effect waves-light btn-small">
   </form>
 <%end%>
 <br>
@@ -15,7 +11,7 @@
 <%if !!@pet.events%>
   <ul>
   <%@pet.events.each do |event|%>
-    <li> • <a href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
+    <li> • <a class="teal-text text-lighten-2" href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
         <%if event.details == nil %>
             No deatils. 
         <%else%>
@@ -31,18 +27,6 @@
 <br>
 <h4>Add an Event:</h4>
 <form method="post" action="/events"> 
-<<<<<<< HEAD
-  <label>Event Type:</label>
-  <input type="text" name="event" id="event"><br>
-  <label>Event Details:</label>
-  <input type="text" name="details" id="details">
-  <input type="hidden" value="<%=@pet.id%>" name="pet_id" /><br>
-  <input type="submit" value="Submit Event">
-</form>
-<br>
-<form action="/home" method="get">
-  <input type="submit" value="Back to Home">
-=======
   <h5>Add an Event:</h5>
   <div class="input-field">
     <label>Event Type:</label>
@@ -53,10 +37,9 @@
     <input type="text" name="details" id="details">
   </div>
     <input type="hidden" value="<%=@pet.id%>" name="pet_id" /><br>
-    <input type="submit" value="Submit Event" class="btn">
+    <input type="submit" value="Submit Event" class="waves-effect waves-light btn-small">
 </form>
 <br>
 <form action="/home" method="get">
-  <input type="submit" value="Back to Home" class="btn">
->>>>>>> original-css
+  <input type="submit" value="Back to Home" class="waves-effect waves-light btn-small">
 </form>

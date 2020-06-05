@@ -6,17 +6,12 @@
 <h3>Edit Event:</h3>
 <form action="/events/<%=@event.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-<<<<<<< HEAD
-    <label>Event Type:</label>
-    <input type="text" name="event" id="event" value="<%=@event.event_type%>">
-=======
     <h5>Edit Event:</h5>
     <br>
     <div class="input-field">
         <label>Event Type:</label>
         <input type="text" name="event" id="event" value="<%=@event.event_type%>">
     </div>
->>>>>>> original-css
     <br>
     <div class="input-field">
         <label>Event Details:</label>
@@ -27,5 +22,5 @@
 <br>
 <form method="post" action="/events/<%= @event.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Event" class="btn"> 
+    <input type="submit" value="Delete Event" class="waves-effect waves-light btn-small"> 
 </form>

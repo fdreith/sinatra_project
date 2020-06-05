@@ -3,16 +3,16 @@
 <h6>Your Household(s):</h6>
     <ul>
     <%@households.each do |household|%>
-    <li> • <a href="/households/<%=household.id%>"><%= household.name %></a></li>
+    <li> • <a class="teal-text text-lighten-2" href="/households/<%=household.id%>"><%= household.name %></a></li>
     <%end%>
     </ul>
 <br>
 <form action="/users/edit" method="get">
-    <input type="submit" value="Add Existing Household" class="btn">
+    <input type="submit" value="Add Existing Household" class="waves-effect waves-light btn-small">
 </form>
 <br>
 <form action="/households/new" method="get">
-    <input type="submit" value="Create a New Household" class="btn">
+    <input type="submit" value="Create a New Household" class="waves-effect waves-light btn-small">
 </form>
 <br>
 <br>
@@ -21,11 +21,11 @@
         <ul>
         <%@pets.each do |pet|%>
        
-            <li> <h6><a href="/pets/<%=pet.id%>"><%= pet.name %></a></h6></li>
+            <li> <h6><a class="teal-text text-lighten-2" href="/pets/<%=pet.id%>"><%= pet.name %></a></h6></li>
             <%if !!pet.events%>
                 <ul>
                 <%pet.events.each do |event|%>
-                    <li> • <a href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
+                    <li> • <a class="teal-text text-lighten-2" href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
                     </li>
                 <%end%>
                 </ul>
@@ -36,7 +36,7 @@
         </ul>
     <br>
     <form action="/pets/new" method="get">
-        <input type="submit" value="Create a New Pet" class="btn">
+        <input type="submit" value="Create a New Pet" class="waves-effect waves-light btn-small">
     </form>
 
 <%end%>

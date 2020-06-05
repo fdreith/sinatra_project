@@ -1,23 +1,6 @@
 <h4> Update Pet</h4>
 <form action="/pets/<%=@pet.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-<<<<<<< HEAD
-    <label>Update Pet Name: </label>
-    <input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>">
-    <br>
-    <label>Update Pet Species: </label>
-    <input type="text" name="pet[species]" id="pet_species" value="<%=@pet.species%>">
-    <br>
-    <br>
-    <h4>Update Your Pet's Household:</h4>
-    <ul>
-        <% current_user.households.each do |household| %>
-        <li><input type="radio" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
-    <% end %>
-    </ul>
-    <br>
-    <input type="submit" value="Update Pet">
-=======
     <div class="input-field">
         <label>Update Pet Name: </label>
         <input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>">
@@ -35,11 +18,10 @@
         <% end %>
         </ul>
         <br>
-    <input type="submit" value="Update Pet" class="btn">
->>>>>>> original-css
+    <input type="submit" value="Update Pet" class="waves-effect waves-light btn-small">
 </form>
 <br>
 <form method="post" action="/pets/<%= @pet.id %>/delete"><br>
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Pet" class="btn"> 
+    <input type="submit" value="Delete Pet" class="waves-effect waves-light btn-small"> 
 </form>
