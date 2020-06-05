@@ -1,6 +1,6 @@
-<h1><%= @user.username %>'s Critter Sitter Homepage</h1>
+<h4 class="center"><%= @user.username %>'s Critter Sitter Homepage</h4>
 
-<h3>Your Household(s):</h3>
+<h6>Your Household(s):</h6>
     <ul>
     <%@households.each do |household|%>
     <li> • <a href="/households/<%=household.id%>"><%= household.name %></a></li>
@@ -8,20 +8,20 @@
     </ul>
 <br>
 <form action="/users/edit" method="get">
-    <input type="submit" value="Add Existing Household">
-</form>
-<form action="/households/new" method="get">
-    <input type="submit" value="Create a New Household">
+    <input type="submit" value="Add Existing Household" class="btn">
 </form>
 <br>
+<form action="/households/new" method="get">
+    <input type="submit" value="Create a New Household" class="btn">
+</form>
 <br>
 <br>
 <%if !@households.empty? %>
-    <h3>Your Pet(s):</h3>
+    <h5>Your Pet(s):</h5>
         <ul>
         <%@pets.each do |pet|%>
        
-            <li> <h4><a href="/pets/<%=pet.id%>"><%= pet.name %></a></h4></li>
+            <li> <h6><a href="/pets/<%=pet.id%>"><%= pet.name %></a></h6></li>
             <%if !!pet.events%>
                 <ul>
                 <%pet.events.each do |event|%>
@@ -36,7 +36,7 @@
         </ul>
     <br>
     <form action="/pets/new" method="get">
-        <input type="submit" value="Create a New Pet">
+        <input type="submit" value="Create a New Pet" class="btn">
     </form>
 
 <%end%>

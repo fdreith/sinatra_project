@@ -1,11 +1,11 @@
-<h1>Pets of <%=@household.name%></h1>
+<h4>Pets of <%=@household.name%></h4>
 
 <% if @household.pets.empty?%>
     This household current has no pets.
   <%else%>
     <ul>
     <%@household.pets.each do |pet|%>
-    <li><h4><a href="/pets/<%=pet.id%>"><%=pet.name%></a></h4></li>
+    <li><h5><a href="/pets/<%=pet.id%>"><%=pet.name%></a></h5></li>
       <%if !!pet.events%>
       <ul>
       <%pet.events.each do |event|%>
@@ -21,26 +21,34 @@
       <%else%>
         <%=@pet.name%> has no events. They might need some attention.
       <%end%>
-
-
-
-
     <%end%>
     </ul>
   <%end%>
 <br>
 <br>
   <form action="/pets/new" method="get">
+<<<<<<< HEAD
     <input type="submit" value="Create New Pet">
+=======
+    <input type="submit" value="Create New Pet" class="btn">
+>>>>>>> original-css
   </form>
 <br>
 <%if @household.owner_id == current_user.id %>
   <form action="/households/<%=@household.id%>/edit" method="get">
+<<<<<<< HEAD
     <input type="submit" value="Edit Household">
   </form>
 <%else%>
   <form action="/users/edit" method="get">
     <input type="submit" value="Remove this Household">
+=======
+    <input type="submit" value="Edit Household" class="btn">
+  </form>
+<%else%>
+  <form action="/users/edit" method="get">
+    <input type="submit" value="Remove this Household" class="btn">
+>>>>>>> original-css
   </form>
 <%end%>
 

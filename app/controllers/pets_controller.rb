@@ -12,6 +12,7 @@ class PetsController < ApplicationController
             household_id: params["pet"]["household_id"],
             owner_id: current_user.id
             )
+        binding.pry
         if @pet.save && params["pet"].has_key?("household_id")
             flash[:success_message] = "You successfully created a new pet!"
             redirect to "/home"

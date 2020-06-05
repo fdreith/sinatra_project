@@ -1,12 +1,23 @@
-<h1>Welcome to Critter Sitter</h1>
+<h4>Welcome to Critter Sitter</h4>
 
-<h3>Login to Review Your Critters:</h3>
+<h6>Login to Review Your Critters:</h6>
 <form action="/login" method="post">
+<div class="input-field">
    <label for="username"> Username: </label>
+<<<<<<< HEAD
    <input id="username" type="text" name="user[username]"><br>
    <label for="password"> Password: </label>
    <input id="password" type="password" name="user[password]"><br>
    <input type="submit" value="Login"><br>
+=======
+   <input id="username" type="text" name="user[:username]"><br>
+</div>
+<div class="input-field">
+   <label for="password"> Password: </label>
+   <input id="password" type="password" name="user[:password]"><br>
+</div>
+   <input type="submit" value="Login" class="btn"><br>
+>>>>>>> original-css
 </form>
 <br>
 <a href="/signup">Sign Up</a> to Create and Account.

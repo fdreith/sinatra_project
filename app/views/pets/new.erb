@@ -1,21 +1,29 @@
-<h1>New Pet</h1>
+<h4>New Pet</h4>
 <form action="/pets" method="post">
+<div class="input-field">
     <label>Pet Name: </label>
     <br>
     <input type="text" name="pet[name]" id="pet_name" value="">
     <br>
+</div>
+<div class="input-field">
     <label>Pet Species: </label>
     <br>
     <input type="text" name="pet[species]" id="pet_species" value="">
+</div>
     <br>
     <br>
+<<<<<<< HEAD
     <h4>Add Your Pet to a Household:</h4>
+=======
+    <h6>Add Your Pet to a Household:</h6>
+>>>>>>> original-css
     <ul>
         <% current_user.households.each do |household| %>
         <li><input type="radio" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
     <% end %>
     </ul>
     <br>
-    <input type="submit" value="Create Pet">
+    <input type="submit" value="Create Pet" class="btn">
 </form>
  

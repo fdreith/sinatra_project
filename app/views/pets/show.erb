@@ -1,13 +1,17 @@
-<h1><%=@pet.name%></h1>
-<h4>Species: <%=@pet.species%> </h4>
-<h4>Household: <%=@household_name%> </h4>
+<h4><%=@pet.name%></h4>
+<h6>Species: <%=@pet.species%> </h6>
+<h6>Household: <%=@household_name%> </h6>
 <%if @pet.owner_id == current_user.id %>
   <form action="/pets/<%=@pet.id%>/edit" method="get">
+<<<<<<< HEAD
     <input type="submit" value="Edit Pet">
+=======
+  <input type="submit" value="Edit Pet" class="btn">
+>>>>>>> original-css
   </form>
 <%end%>
 <br>
-<h4><%=@pet.name%>'s Events:</h4>
+<h6><%=@pet.name%>'s Events:</h6>
 <%if !!@pet.events%>
   <ul>
   <%@pet.events.each do |event|%>
@@ -27,6 +31,7 @@
 <br>
 <h4>Add an Event:</h4>
 <form method="post" action="/events"> 
+<<<<<<< HEAD
   <label>Event Type:</label>
   <input type="text" name="event" id="event"><br>
   <label>Event Details:</label>
@@ -37,4 +42,21 @@
 <br>
 <form action="/home" method="get">
   <input type="submit" value="Back to Home">
+=======
+  <h5>Add an Event:</h5>
+  <div class="input-field">
+    <label>Event Type:</label>
+    <input type="text" name="event" id="event"><br>
+  </div>
+  <div class="input-field">
+    <label>Event Details:</label>
+    <input type="text" name="details" id="details">
+  </div>
+    <input type="hidden" value="<%=@pet.id%>" name="pet_id" /><br>
+    <input type="submit" value="Submit Event" class="btn">
+</form>
+<br>
+<form action="/home" method="get">
+  <input type="submit" value="Back to Home" class="btn">
+>>>>>>> original-css
 </form>

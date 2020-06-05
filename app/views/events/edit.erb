@@ -1,20 +1,31 @@
-<h1><%=@pet.name%> was <%=@event.event_type%></h1>
+<h4><%=@pet.name%> <%=@event.event_type%></h4>
 
-<h3>at <%=@event.created_at%></h3>
-<h3>Details: <%=@event.details%></h3>
+<h6>at <%=@event.created_at%></h6>
+<h6>Details: <%=@event.details%></h6>
 
 <h3>Edit Event:</h3>
 <form action="/events/<%=@event.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
+<<<<<<< HEAD
     <label>Event Type:</label>
     <input type="text" name="event" id="event" value="<%=@event.event_type%>">
+=======
+    <h5>Edit Event:</h5>
     <br>
-    <label>Event Details:</label>
-    <input type="text" name="details" id="details" value="<%=@event.details%>">
+    <div class="input-field">
+        <label>Event Type:</label>
+        <input type="text" name="event" id="event" value="<%=@event.event_type%>">
+    </div>
+>>>>>>> original-css
+    <br>
+    <div class="input-field">
+        <label>Event Details:</label>
+        <input type="text" name="details" id="details" value="<%=@event.details%>">
+    </div>
     <input type="submit" value="Submit">
 </form>
 <br>
 <form method="post" action="/events/<%= @event.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Event"> 
+    <input type="submit" value="Delete Event" class="btn"> 
 </form>
