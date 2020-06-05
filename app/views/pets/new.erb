@@ -1,4 +1,4 @@
-<h2>New Pet</h2>
+<h4>New Pet</h4>
 <form action="/pets" method="post">
 <div class="input-field">
     <label>Pet Name: </label>
@@ -13,7 +13,7 @@
 </div>
     <br>
     <br>
-    <h4>Add Your Pet to a Household:</h4>
+    <h6>Add Your Pet to a Household:</h6>
     <ul>
         <% current_user.households.each do |household| %>
         <li><input type="radio" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>

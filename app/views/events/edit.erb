@@ -1,11 +1,11 @@
-<h2><%=@pet.name%> was <%=@event.event_type%></h2>
+<h4><%=@pet.name%> <%=@event.event_type%></h4>
 
-<h4>at <%=@event.created_at%></h4>
-<h4>Details: <%=@event.details%></h4>
+<h6>at <%=@event.created_at%></h6>
+<h6>Details: <%=@event.details%></h6>
 
 <form action="/events/<%=@event.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
-    <h3>Edit Event:</h3>
+    <h5>Edit Event:</h5>
     <br>
     <div class="input-field">
         <label>Event Type:</label>

@@ -1,13 +1,13 @@
-<h2><%=@pet.name%></h2>
-<h5>Species: <%=@pet.species%> </h5>
-<h5>Household: <%=@household_name%> </h5>
+<h4><%=@pet.name%></h4>
+<h6>Species: <%=@pet.species%> </h6>
+<h6>Household: <%=@household_name%> </h6>
 <%if @pet.owner_id == current_user.id %>
   <form action="/pets/<%=@pet.id%>/edit" method="get">
   <input type="submit" value="Edit Pet" class="btn">
   </form>
 <%end%>
 <br>
-<h5><%=@pet.name%>'s Events:</h5>
+<h6><%=@pet.name%>'s Events:</h6>
 <%if !!@pet.events%>
   <ul>
   <%@pet.events.each do |event|%>

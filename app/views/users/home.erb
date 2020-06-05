@@ -1,6 +1,6 @@
-<h2 class="center"><%= @user.username %>'s Critter Sitter Homepage</h2>
+<h4 class="center"><%= @user.username %>'s Critter Sitter Homepage</h4>
 
-<h4>Your Household(s):</h4>
+<h6>Your Household(s):</h6>
     <ul>
     <%@households.each do |household|%>
     <li> • <a href="/households/<%=household.id%>"><%= household.name %></a></li>
@@ -17,11 +17,11 @@
 <br>
 <br>
 <%if !@households.empty? %>
-    <h4>Your Pet(s):</h4>
+    <h5>Your Pet(s):</h5>
         <ul>
         <%@pets.each do |pet|%>
        
-            <li> <h5><a href="/pets/<%=pet.id%>"><%= pet.name %></a></h5></li>
+            <li> <h6><a href="/pets/<%=pet.id%>"><%= pet.name %></a></h6></li>
             <%if !!pet.events%>
                 <ul>
                 <%pet.events.each do |event|%>

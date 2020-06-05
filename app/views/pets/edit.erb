@@ -1,4 +1,4 @@
-<h2> Update Pet</h2>
+<h4> Update Pet</h4>
 <form action="/pets/<%=@pet.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
     <div class="input-field">
@@ -11,7 +11,7 @@
         <input type="text" name="pet[species]" id="pet_species" value="<%=@pet.species%>">
     </div>    
         <br>
-        <h4>Update Your Pet's Household:</h4>
+        <h6>Update Your Pet's Household:</h6>
         <ul>
             <% current_user.households.each do |household| %>
             <li><input type="radio" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
