@@ -14,11 +14,16 @@
     <br>
     <br>
     <h6>Add Your Pet to a Household:</h6>
-    <ul>
+
         <% current_user.households.each do |household| %>
-        <li><input type="radio" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"><%=household.name %></li>
-    <% end %>
-    </ul>
+        <p>
+        <label>
+            <input class="with-gap" type="radio" name="pet[household_id]" id="<%= household.id %>" value="<%= household.id %>"/> 
+            <span><%=household.name %></span>
+        </label>
+        <p>
+        <% end %>
+
     <br>
     <input type="submit" value="Create Pet" class="waves-effect waves-light btn-small">
 </form>
