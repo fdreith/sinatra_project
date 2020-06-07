@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col s6">
-        <%if !@households.empty? %>
+        <%if !@pets.empty? %>
             <h5>Your Pet(s):</h5>
                 <ul>
                 <%@pets.each do |pet|%>
@@ -24,13 +24,14 @@
     </div>
 
     <div class="col s6">
+         <%if !@households.empty? %>
         <h5>Your Household(s):</h5>
             <ul>
             <%@households.each do |household|%>
                 <li> • <a class="teal-text text-lighten-2" href="/households/<%=household.id%>"><%= household.name %></a></li>
             <%end%>
             </ul>
-        <br>
+        <%end%>
     </div>
 </div>
 
