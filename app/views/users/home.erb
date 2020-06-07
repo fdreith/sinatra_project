@@ -1,42 +1,52 @@
 <h4 class="center"><%= @user.username %>'s Critter Sitter Homepage</h4>
 
-<h6>Your Household(s):</h6>
-    <ul>
-    <%@households.each do |household|%>
-    <li> • <a class="teal-text text-lighten-2" href="/households/<%=household.id%>"><%= household.name %></a></li>
-    <%end%>
-    </ul>
-<br>
-<form action="/users/edit" method="get">
-    <input type="submit" value="Add Existing Household" class="waves-effect waves-light btn-small">
-</form>
-<br>
-<form action="/households/new" method="get">
-    <input type="submit" value="Create a New Household" class="waves-effect waves-light btn-small">
-</form>
-<br>
-<br>
-<%if !@households.empty? %>
-    <h5>Your Pet(s):</h5>
-        <ul>
-        <%@pets.each do |pet|%>
-       
-            <li> <h6><a class="teal-text text-lighten-2" href="/pets/<%=pet.id%>"><%= pet.name %></a></h6></li>
-            <%if !!pet.events%>
+<div class="row">
+    <div class="col s6">
+        <%if !@households.empty? %>
+            <h5>Your Pet(s):</h5>
                 <ul>
-                <%pet.events.each do |event|%>
-                    <li> • <a class="teal-text text-lighten-2" href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
-                    </li>
+                <%@pets.each do |pet|%>
+                    <li> <h6><a class="teal-text text-lighten-2" href="/pets/<%=pet.id%>"><%= pet.name %></a></h6></li>
+                    <%if !!pet.events%>
+                        <ul>
+                        <%pet.events.each do |event|%>
+                            <li> • <a class="teal-text text-lighten-2" href="/events/<%=event.id%>/edit"> <%=event.event_type%></a>  at  <%=event.created_at.strftime("at %I:%M %p")%> on <%=event.date%>
+                            </li>
+                        <%end%>
+                        </ul>
+                    <%else%>
+                        <%=@pet.name%> has no events. They might need some attention.
+                    <%end%>
                 <%end%>
                 </ul>
-            <%else%>
-                <%=@pet.name%> has no events. They might need some attention.
-            <%end%>
+            <br>
         <%end%>
-        </ul>
-    <br>
-    <form action="/pets/new" method="get">
-        <input type="submit" value="Create a New Pet" class="waves-effect waves-light btn-small">
-    </form>
+    </div>
 
-<%end%>
+    <div class="col s6">
+        <h5>Your Household(s):</h5>
+            <ul>
+            <%@households.each do |household|%>
+                <li> • <a class="teal-text text-lighten-2" href="/households/<%=household.id%>"><%= household.name %></a></li>
+            <%end%>
+            </ul>
+        <br>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s6">
+            <form action="/pets/new" method="get">
+                <input type="submit" value="Create a New Pet" class="waves-effect waves-light btn-small">
+            </form>
+    </div>
+    <div class="col s6">
+        <form action="/users/edit" method="get">
+            <input type="submit" value="Add Existing Household" class="waves-effect waves-light btn-small">
+        </form>
+        <br>
+        <form action="/households/new" method="get">
+            <input type="submit" value="Create a New Household" class="waves-effect waves-light btn-small">
+        </form>
+    </div>
+</div>
